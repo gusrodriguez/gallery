@@ -11,8 +11,9 @@ class Image extends Component {
     this.props.displayImage();
   }
   render() {
+    const { src } = this.props;
     return (
-      <div>The Image!</div>
+      <img src={src} className="image" />
     );
   }
 }
