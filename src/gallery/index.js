@@ -50,10 +50,13 @@ const mapStateToProps = (state) => {
 };
 
 
-const mapDispatchToProps = dispatch => ({
-  fetchImages: bindActionCreators(actions.fetchImages, dispatch),
-});
+// const mapDispatchToProps = dispatch => ({
+//   fetchImages: bindActionCreators(actions.fetchImages, dispatch),
+// });
 
+const mapDispatchToProps = {
+  fetchImages: actions.fetchImages,
+};
 
 Gallery.propTypes = {
   displayImage: PropTypes.func.isRequired,
