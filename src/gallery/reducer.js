@@ -9,6 +9,7 @@ import {
 
 const initialState = { 
   imageDisplayed: false,
+  nextPage: 1,
   imageSize: 200,
   images: [],
   fetching: false,
@@ -27,7 +28,9 @@ const nextStateRequestImages = (state, payload) => {
 
 const nextStateLoadImages = (state, payload) => {
   const next = clone(state);
+  next.nextPage += 1;
   next.images = [...state.images].concat([...payload.images]);
+  next.fetching = payload.fetching;
   return next;
 };
 

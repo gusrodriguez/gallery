@@ -22,77 +22,18 @@ const closeImage = () => {
   };
 };
 
-const loadImages = (page) => {
-  const images = {
-    1: ["https://www.w3schools.com/w3images/wedding.jpg",
-      "https://www.w3schools.com/w3images/rocks.jpg",
-      "https://www.w3schools.com/w3images/falls2.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/nature.jpg",
-      "https://www.w3schools.com/w3images/mist.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/ocean.jpg",
-      "https://www.w3schools.com/w3images/wedding.jpg",
-      "https://www.w3schools.com/w3images/mountainskies.jpg",
-      "https://www.w3schools.com/w3images/rocks.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/wedding.jpg",
-      "https://www.w3schools.com/w3images/rocks.jpg",
-      "https://www.w3schools.com/w3images/falls2.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/nature.jpg",
-      "https://www.w3schools.com/w3images/mist.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/ocean.jpg",
-      "https://www.w3schools.com/w3images/wedding.jpg",
-      "https://www.w3schools.com/w3images/mountainskies.jpg",
-      "https://www.w3schools.com/w3images/rocks.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-      "https://www.w3schools.com/w3images/paris.jpg",
-    ],
-    2: [
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-      "https://www.w3schools.com/w3images/underwater.jpg",
-    ],
-  }
+const loadImages = (response) => {
+  const urls = response.data.map((entry) => {
+    return `https://farm${entry.farm}.staticflickr.com/${entry.server}/${entry.id}_${entry.secret}.jpg`
+  });
   return {
     type: LOAD_IMAGES,
     payload: {
-      images: images[page],
+      images: urls,
       fetching: false,
     },
   };
 };
-
 
 const resizeImages = (containerWidth, imageSize) => {
   const imagesPerRow = Math.round(containerWidth / imageSize);
@@ -111,11 +52,9 @@ const requestImages = () => {
 };
 
 const fetchImages = page => async (dispatch) => {
-  console.log("antes fetch");
-  const res = await axios.get(`${config.apiBaseUrl}/api/images`);
-  console.log("despues fetch");
+  const response = await axios.get(`${config.apiBaseUrl}/api/images?page=${page}`);
   dispatch(requestImages());
-  dispatch(loadImages(page));
+  dispatch(loadImages(response));
 };
 
 export default {

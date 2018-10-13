@@ -9,14 +9,14 @@ import styles from './styles.scss';
 class Gallery extends React.Component {
   componentDidMount() {
     this.width = document.body.clientWidth;
-    this.props.fetchImages(1);
+    this.props.fetchImages(this.props.nextPage);
   }
   render() {
     const { displayImage, closeImage } = this.props;
     const images = this.props.images.map(src => (
       <Image
         resizeImages={this.props.resizeImages}
-        src={src} 
+        src={src}
         containerWidth={this.width}
         size={this.props.imageSize}
       />
@@ -25,7 +25,7 @@ class Gallery extends React.Component {
       <section className="gallery" >
         {images}
         <Waypoint
-          onEnter={() => this.props.fetchImages(2)}
+          onEnter={() => this.props.fetchImages(this.props.nextPage)}
         />
       </section>
     );
@@ -37,6 +37,7 @@ const mapStateToProps = (state) => {
     imageDisplayed: state.imageDisplayed,
     images: state.images,
     imageSize: state.imageSize,
+    nextPage: state.nextPage,
   };
 };
 
