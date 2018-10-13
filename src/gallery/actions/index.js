@@ -1,3 +1,5 @@
+import axios from 'axios';
+import config from '../../../config';
 import {
   DISPLAY_IMAGE,
   CLOSE_IMAGE,
@@ -21,66 +23,67 @@ const closeImage = () => {
 };
 
 const loadImages = (page) => {
-  const images = { 1: ["https://www.w3schools.com/w3images/wedding.jpg",
-    "https://www.w3schools.com/w3images/rocks.jpg",
-    "https://www.w3schools.com/w3images/falls2.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/nature.jpg",
-    "https://www.w3schools.com/w3images/mist.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/ocean.jpg",
-    "https://www.w3schools.com/w3images/wedding.jpg",
-    "https://www.w3schools.com/w3images/mountainskies.jpg",
-    "https://www.w3schools.com/w3images/rocks.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/wedding.jpg",
-    "https://www.w3schools.com/w3images/rocks.jpg",
-    "https://www.w3schools.com/w3images/falls2.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/nature.jpg",
-    "https://www.w3schools.com/w3images/mist.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/ocean.jpg",
-    "https://www.w3schools.com/w3images/wedding.jpg",
-    "https://www.w3schools.com/w3images/mountainskies.jpg",
-    "https://www.w3schools.com/w3images/rocks.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-    "https://www.w3schools.com/w3images/paris.jpg",
-  ], 
-  2: [
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",  
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-    "https://www.w3schools.com/w3images/underwater.jpg",
-  ],
-}
+  const images = {
+    1: ["https://www.w3schools.com/w3images/wedding.jpg",
+      "https://www.w3schools.com/w3images/rocks.jpg",
+      "https://www.w3schools.com/w3images/falls2.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/nature.jpg",
+      "https://www.w3schools.com/w3images/mist.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/ocean.jpg",
+      "https://www.w3schools.com/w3images/wedding.jpg",
+      "https://www.w3schools.com/w3images/mountainskies.jpg",
+      "https://www.w3schools.com/w3images/rocks.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/wedding.jpg",
+      "https://www.w3schools.com/w3images/rocks.jpg",
+      "https://www.w3schools.com/w3images/falls2.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/nature.jpg",
+      "https://www.w3schools.com/w3images/mist.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/ocean.jpg",
+      "https://www.w3schools.com/w3images/wedding.jpg",
+      "https://www.w3schools.com/w3images/mountainskies.jpg",
+      "https://www.w3schools.com/w3images/rocks.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+      "https://www.w3schools.com/w3images/paris.jpg",
+    ],
+    2: [
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+      "https://www.w3schools.com/w3images/underwater.jpg",
+    ],
+  }
   return {
     type: LOAD_IMAGES,
     payload: {
@@ -107,11 +110,12 @@ const requestImages = () => {
   };
 };
 
-const fetchImages = (page) => {
-  return (dispatch) => {
-    dispatch(requestImages());
-    dispatch(loadImages(page));
-  };
+const fetchImages = page => async (dispatch) => {
+  console.log("antes fetch");
+  const res = await axios.get(`${config.apiBaseUrl}/api/images`);
+  console.log("despues fetch");
+  dispatch(requestImages());
+  dispatch(loadImages(page));
 };
 
 export default {
