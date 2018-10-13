@@ -4,10 +4,12 @@ import {
   CLOSE_IMAGE,
   REQUEST_IMAGES,
   LOAD_IMAGES,
+  RESIZE_IMAGES,
 } from './actions/types';
 
 const initialState = { 
   imageDisplayed: false,
+  imageSize: 200,
   images: [],
   fetching: false,
 };
@@ -29,6 +31,12 @@ const nextStateLoadImages = (state, payload) => {
   return next;
 };
 
+const nextStateResizeImages = (state, payload) => {
+  const next = clone(state);
+  next.imageSize = payload.imageSize;
+  return next;
+};
+
 const galleryReducer = (state = initialState, action) => {
   switch (action.type) {
     case DISPLAY_IMAGE:
@@ -39,6 +47,8 @@ const galleryReducer = (state = initialState, action) => {
       return nextStateRequestImages(state, action.payload);
     case LOAD_IMAGES:
       return nextStateLoadImages(state, action.payload);
+    case RESIZE_IMAGES:
+      return nextStateResizeImages(state, action.payload);
     default:
       return state;
   }

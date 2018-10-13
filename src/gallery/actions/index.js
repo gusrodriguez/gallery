@@ -3,6 +3,7 @@ import {
   CLOSE_IMAGE,
   REQUEST_IMAGES,
   LOAD_IMAGES,
+  RESIZE_IMAGES,
 } from './types';
 
 const displayImage = () => {
@@ -58,6 +59,15 @@ const loadImages = () => {
   };
 };
 
+const resizeImages = (containerWidth, imageSize) => {
+  const imagesPerRow = Math.round(containerWidth / imageSize);
+  const size = (containerWidth / imagesPerRow);
+  return {
+    type: 'RESIZE_IMAGES',
+    payload: { imageSize: size },
+  };
+}
+
 const requestImages = () => {
   return {
     type: REQUEST_IMAGES,
@@ -76,4 +86,5 @@ export default {
   displayImage,
   closeImage,
   fetchImages,
+  resizeImages,
 };

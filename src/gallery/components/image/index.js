@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles.scss';
+import './styles.scss';
 
-class Image extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick() {
-    this.props.displayImage();
+class Image extends React.Component {
+  componentDidMount() {
+    const { containerWidth, size, resizeImages } = this.props;
+    resizeImages(containerWidth, size);
   }
   render() {
-    const { src } = this.props;
     return (
-      <img src={src} className="image" />
+      <div
+        className="image"
+        style={{
+          backgroundImage: `url(${this.props.src})`,
+          width: `${this.props.size}px`,
+          height: `${this.props.size}px`,
+        }}
+      />
     );
   }
 }
-
-Image.propTypes = {
-  displayImage: PropTypes.func.isRequired,
-};
 
 export default Image;
