@@ -20,8 +20,8 @@ const closeImage = () => {
   };
 };
 
-const loadImages = () => {
-  const images = ["https://www.w3schools.com/w3images/wedding.jpg",
+const loadImages = (page) => {
+  const images = { 1: ["https://www.w3schools.com/w3images/wedding.jpg",
     "https://www.w3schools.com/w3images/rocks.jpg",
     "https://www.w3schools.com/w3images/falls2.jpg",
     "https://www.w3schools.com/w3images/paris.jpg",
@@ -49,15 +49,47 @@ const loadImages = () => {
     "https://www.w3schools.com/w3images/underwater.jpg",
     "https://www.w3schools.com/w3images/underwater.jpg",
     "https://www.w3schools.com/w3images/underwater.jpg",
-  ]
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+    "https://www.w3schools.com/w3images/paris.jpg",
+  ], 
+  2: [
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",  
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+    "https://www.w3schools.com/w3images/underwater.jpg",
+  ],
+}
   return {
     type: LOAD_IMAGES,
     payload: {
-      images,
+      images: images[page],
       fetching: false,
     },
   };
 };
+
 
 const resizeImages = (containerWidth, imageSize) => {
   const imagesPerRow = Math.round(containerWidth / imageSize);
@@ -75,10 +107,10 @@ const requestImages = () => {
   };
 };
 
-const fetchImages = () => {
+const fetchImages = (page) => {
   return (dispatch) => {
     dispatch(requestImages());
-    dispatch(loadImages());
+    dispatch(loadImages(page));
   };
 };
 

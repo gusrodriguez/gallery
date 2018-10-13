@@ -27,7 +27,7 @@ const nextStateRequestImages = (state, payload) => {
 
 const nextStateLoadImages = (state, payload) => {
   const next = clone(state);
-  next.images = [...payload.images];
+  next.images = [...state.images].concat([...payload.images]);
   return next;
 };
 

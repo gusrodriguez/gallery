@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Image from './components/image';
 import actions from './actions';
+import Waypoint from 'react-waypoint';
 import styles from './styles.scss';
 
 class Gallery extends React.Component {
   componentDidMount() {
     this.width = document.body.clientWidth;
-    this.props.fetchImages();
+    this.props.fetchImages(1);
   }
   render() {
     const { displayImage, closeImage } = this.props;
@@ -23,6 +24,9 @@ class Gallery extends React.Component {
     return (
       <section className="gallery" >
         {images}
+        <Waypoint
+          onEnter={() => this.props.fetchImages(2)}
+        />
       </section>
     );
   }
