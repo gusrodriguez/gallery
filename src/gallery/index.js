@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Image from './components/image';
 import actions from './actions';
+import Modal from './components/modal';
 import Waypoint from 'react-waypoint';
 import styles from './styles.scss';
 
@@ -12,9 +13,9 @@ class Gallery extends React.Component {
     this.props.fetchImages(this.props.nextPage);
   }
   render() {
-    const { displayImage, closeImage } = this.props;
     const images = this.props.images.map(src => (
       <Image
+        displayImage={this.props.displayImage}
         resizeImages={this.props.resizeImages}
         src={src}
         containerWidth={this.width}
@@ -23,6 +24,7 @@ class Gallery extends React.Component {
     ));
     return (
       <section className="gallery" >
+        <Modal display={this.props.imageDisplayed}/>
         {images}
         <Waypoint
           onEnter={() => this.props.fetchImages(this.props.nextPage)}
@@ -44,6 +46,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   fetchImages: actions.fetchImages,
   resizeImages: actions.resizeImages,
+  displayImage: actions.displayImage,
 };
 
 Gallery.propTypes = {

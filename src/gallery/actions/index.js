@@ -4,6 +4,8 @@ import {
   REQUEST_IMAGES,
   LOAD_IMAGES,
   RESIZE_IMAGES,
+  DISPLAY_IMAGE,
+  CLOSE_IMAGE,
 } from './types';
 
 const loadImages = (response) => {
@@ -41,7 +43,23 @@ const resizeImages = (containerWidth, imageSize) => {
   };
 }
 
+const displayImage = () => (dispatch) => {
+  dispatch({
+    type: DISPLAY_IMAGE,
+    payload: true,
+  });
+};
+
+const closeImage = () => {
+  return {
+    type: CLOSE_IMAGE,
+    payload: false,
+  };
+};
+
 export default {
   fetchImages,
   resizeImages,
+  displayImage,
+  closeImage,
 };
