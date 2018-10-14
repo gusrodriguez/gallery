@@ -24,7 +24,7 @@ class Gallery extends React.Component {
     ));
     return (
       <section className="gallery" >
-        <Modal display={this.props.imageDisplayed}/>
+        <Modal display={this.props.imageDisplayed} close={this.props.closeImage} />
         {images}
         <Waypoint
           onEnter={() => this.props.fetchImages(this.props.nextPage)}
@@ -47,9 +47,12 @@ const mapDispatchToProps = {
   fetchImages: actions.fetchImages,
   resizeImages: actions.resizeImages,
   displayImage: actions.displayImage,
+  closeImage: actions.closeImage,
 };
 
 Gallery.propTypes = {
+  fetchImages: PropTypes.func.isRequired,
+  resizeImages: PropTypes.func.isRequired,
   displayImage: PropTypes.func.isRequired,
   closeImage: PropTypes.func.isRequired,
 };

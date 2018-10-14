@@ -6,10 +6,10 @@ function Modal(props) {
   return (
     <div className={`modal ${visible}`}>
       <div className="modal-content">
-        <span className="close">&times;</span>
+        <span className="close" onClick={() => props.close()}>&times;</span>
         <p>Some text in the Modal..</p>
       </div>
-    </div>
+    </div >
   );
 }
 
