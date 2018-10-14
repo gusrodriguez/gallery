@@ -11,6 +11,12 @@
   position: relative;
   border: 1px solid white;
   background-color: $light-gray;
+  .post {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   .info {
     display: table;
     background: white;
@@ -24,6 +30,9 @@
       transition: opacity 0.5s ease-in-out; 
     }
     .info-cell {
+      font-family: $header-font-family;
+      font-weight: bold;
+      color: darkblue;
       display: table-cell;
       vertical-align: middle
     }

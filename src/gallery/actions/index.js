@@ -9,13 +9,18 @@ import {
 } from './types';
 
 const loadImages = (response) => {
-  const urls = response.data.map((entry) => {
-    return `https://farm${entry.farm}.staticflickr.com/${entry.server}/${entry.id}_${entry.secret}.jpg`
+  const images = response.data.map((value) => {
+    return {
+      src: `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}.jpg`, 
+      title: value.title,
+      author: value.author,
+      postUrl: value.postUrl,
+    };
   });
   return {
     type: LOAD_IMAGES,
     payload: {
-      images: urls,
+      images,
       fetching: false,
     },
   };
@@ -43,10 +48,10 @@ const resizeImages = (containerWidth, imageSize) => {
   };
 }
 
-const displayImage = src => (dispatch) => {
+const displayImage = image => (dispatch) => {
   dispatch({
     type: DISPLAY_IMAGE,
-    payload: src,
+    payload: image,
   });
 };
 

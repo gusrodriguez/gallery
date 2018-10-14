@@ -40,11 +40,12 @@ router.get('/images', (req, res) => {
           values.forEach((value) => {
             response.push({
               id: value.data.photo.id,
+              title: value.data.photo.title._content,
               server: value.data.photo.server,
               secret: value.data.photo.secret,
               farm: value.data.photo.farm,
-              userName: value.data.photo.owner.username,
-              postUrl: value.data.photo.urls.url[0]._content
+              author: value.data.photo.owner.username,
+              postUrl: value.data.photo.urls.url[0]._content,
             });
           });
 

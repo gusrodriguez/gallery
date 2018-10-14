@@ -13,15 +13,15 @@ class Gallery extends React.Component {
     this.props.fetchImages(this.props.nextPage);
   }
   render() {
-    const images = this.props.images.map(src => (
-      <Image
-        displayImage={() => this.props.displayImage(src)}
+    const images = this.props.images.map((image) => {
+      return (<Image
+        displayImage={() => this.props.displayImage(image)}
         resizeImages={this.props.resizeImages}
-        src={src}
+        image={image}
         containerWidth={this.width}
         size={this.props.imageSize}
-      />
-    ));
+      />)
+    });
     return (
       <section className="gallery" >
         <Modal display={this.props.imageDisplayed} close={this.props.closeImage} />
