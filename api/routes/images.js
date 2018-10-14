@@ -4,22 +4,34 @@ const axios = require('axios');
 
 const router = express.Router();
 
+function getListPromise(page) {
+  return (
+    axios({
+      url: `services/rest/?method=flickr.photos.search&api_key=${config.api.flickrApiKey}&tags='london'&page=${page}tag_mode=any&per_page=30&format=json&nojsoncallback=1`,
+      baseURL: 'https://api.flickr.com/',
+      method: 'GET',
+    })
+  );
+}
+
+function getImagePromise(id, secret) {
+  return (
+    axios({
+      url: `services/rest/?method=flickr.photos.getInfo&api_key=${config.api.flickrApiKey}&photo_id=${id}&secret=${secret}&format=json&nojsoncallback=1`,
+      baseURL: 'https://api.flickr.com/',
+      method: 'GET',
+    })
+  );
+}
+
 router.get('/images', (req, res) => {
   const promises = [];
   const response = [];
-  axios({
-    url: `services/rest/?method=flickr.photos.search&api_key=${config.api.flickrApiKey}&tags='london'&page=${req.query.page}tag_mode=any&per_page=30&format=json&nojsoncallback=1`,
-    baseURL: 'https://api.flickr.com/',
-    method: 'GET',
-  })
+  getListPromise(req.query.page)
     .then((apiResponse) => {
       apiResponse.data.photos.photo.forEach((image) => {
         promises.push(
-          axios({
-            url: `services/rest/?method=flickr.photos.getInfo&api_key=${config.api.flickrApiKey}&photo_id=${image.id}&secret=${image.secret}&format=json&nojsoncallback=1`,
-            baseURL: 'https://api.flickr.com/',
-            method: 'GET',
-          }),
+          getImagePromise(image.id, image.secret),
         );
       });
 
@@ -35,7 +47,7 @@ router.get('/images', (req, res) => {
               postUrl: value.data.photo.urls.url[0]._content
             });
           });
-          
+
           res.json(response);
         });
     });

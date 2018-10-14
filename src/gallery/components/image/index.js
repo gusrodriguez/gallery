@@ -17,7 +17,22 @@ class Image extends React.Component {
           width: `${this.props.size}px`,
           height: `${this.props.size}px`,
         }}
-      />
+      >
+        <div
+          className="info"
+          style={{
+            width: `${this.props.size - 30}px`,
+            height: `${this.props.size - 30}px`,
+            marginTop: '15px',
+            marginLeft: '15px',
+          }}
+        >
+          <div className="info-cell">
+            <p>This is the title </p>
+            <p>This is the author</p>
+          </div>
+        </div>
+      </div>
     );
   }
 }
