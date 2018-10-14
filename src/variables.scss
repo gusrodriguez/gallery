@@ -1,0 +1,16 @@
+// General variables
+$light-gray: #E0E0E0;
+
+// Header
+$header-font-family: fantasy;
+$header-font-size: 30px;
+
+// Modal
+$modal-border: #888;
+$modal-content-background: #fefefe;
+$modal-background: rgba(0,0,0,0.4); 
+$modal-close-color: #aaaaaa;
+$modal-font-size: 28px;
+
+@import './header/header.scss';
+

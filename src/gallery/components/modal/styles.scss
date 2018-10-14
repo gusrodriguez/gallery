@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 .modal {
     display: none; 
     position: fixed; 
@@ -8,24 +10,23 @@
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    background-color: $modal-background;
     .modal-content {
-      background-color: #fefefe;
+      background-color: $modal-content-background;
+      border: 1px solid $modal-border;
       margin: auto;
       padding: 20px;
-      border: 1px solid #888;
       width: 80%;
   }
   .close {
-      color: #aaaaaa;
+      color: $modal-close-color;
+      font-size: $modal-font-size;
       float: right;
-      font-size: 28px;
       font-weight: bold;
   }
   .close:hover,
   .close:focus {
-      color: #000;
+      color: black;
       text-decoration: none;
       cursor: pointer;
   }
