@@ -1,26 +1,10 @@
 import axios from 'axios';
 import config from '../../../config';
 import {
-  DISPLAY_IMAGE,
-  CLOSE_IMAGE,
   REQUEST_IMAGES,
   LOAD_IMAGES,
   RESIZE_IMAGES,
 } from './types';
-
-const displayImage = () => {
-  return {
-    type: DISPLAY_IMAGE,
-    payload: true,
-  };
-};
-
-const closeImage = () => {
-  return {
-    type: CLOSE_IMAGE,
-    payload: false,
-  };
-};
 
 const loadImages = (response) => {
   const urls = response.data.map((entry) => {
@@ -35,15 +19,6 @@ const loadImages = (response) => {
   };
 };
 
-const resizeImages = (containerWidth, imageSize) => {
-  const imagesPerRow = Math.round(containerWidth / imageSize);
-  const size = (containerWidth / imagesPerRow);
-  return {
-    type: 'RESIZE_IMAGES',
-    payload: { imageSize: size },
-  };
-}
-
 const requestImages = () => {
   return {
     type: REQUEST_IMAGES,
@@ -57,9 +32,16 @@ const fetchImages = page => async (dispatch) => {
   dispatch(loadImages(response));
 };
 
+const resizeImages = (containerWidth, imageSize) => {
+  const imagesPerRow = Math.round(containerWidth / imageSize);
+  const size = (containerWidth / imagesPerRow);
+  return {
+    type: RESIZE_IMAGES,
+    payload: { imageSize: size },
+  };
+}
+
 export default {
-  displayImage,
-  closeImage,
   fetchImages,
   resizeImages,
 };

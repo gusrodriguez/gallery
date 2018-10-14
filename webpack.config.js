@@ -43,7 +43,6 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    
   ],
   watchOptions: {
     poll: true,

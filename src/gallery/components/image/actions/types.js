@@ -1,0 +1,7 @@
+const DISPLAY_IMAGE = 'DISPLAY_IMAGE';
+const CLOSE_IMAGE = 'CLOSE_IMAGE';
+
+export {
+  DISPLAY_IMAGE,
+  CLOSE_IMAGE,
+};
