@@ -15,4 +15,15 @@ router.get('/images', (req, res) => {
     });
 });
 
+router.get('/info', (req, res) => {
+  axios({
+    url: `services/rest/?method=flickr.photos.getInfo&api_key=${config.api.flickrApiKey}&photo_id=${req.query.photoId}&secret=${req.query.secret}&format=json&nojsoncallback=1`,
+    baseURL: 'https://api.flickr.com/',
+    method: 'GET',
+  })
+    .then((apiResponse) => {
+      res.json(apiResponse.data);
+    });
+});
+
 module.exports = router;

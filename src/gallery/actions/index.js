@@ -43,17 +43,17 @@ const resizeImages = (containerWidth, imageSize) => {
   };
 }
 
-const displayImage = () => (dispatch) => {
+const displayImage = src => (dispatch) => {
   dispatch({
     type: DISPLAY_IMAGE,
-    payload: true,
+    payload: src,
   });
 };
 
 const closeImage = () => {
   return {
     type: CLOSE_IMAGE,
-    payload: false,
+    payload: null,
   };
 };
 

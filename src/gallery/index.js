@@ -15,7 +15,7 @@ class Gallery extends React.Component {
   render() {
     const images = this.props.images.map(src => (
       <Image
-        displayImage={this.props.displayImage}
+        displayImage={() => this.props.displayImage(src)}
         resizeImages={this.props.resizeImages}
         src={src}
         containerWidth={this.width}
