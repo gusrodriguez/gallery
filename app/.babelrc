@@ -6,7 +6,7 @@
   "plugins": [
     [
       "transform-async-to-generator",
-      "transform-runtime",
+      "transform-runtime"
     ]
   ]
 }

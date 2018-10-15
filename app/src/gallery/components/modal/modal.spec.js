@@ -16,7 +16,7 @@ function setup() {
   return { props, wrapper };
 }
 
-describe('Image', () => {
+describe('Modal', () => {
   const { wrapper, props } = setup();
   it('should render correctly', () => {
     expect(wrapper.find('div').first().hasClass('modal')).toBe(true);

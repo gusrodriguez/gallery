@@ -1,8 +1,6 @@
 import reducer from './reducer'
 import {
-  DISPLAY_IMAGE,
   CLOSE_IMAGE,
-  LOAD_IMAGES,
   RESIZE_IMAGES,
 } from './actions/types';
 

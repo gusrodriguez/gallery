@@ -19,7 +19,6 @@ describe('actions', () => {
     expect(actions.loadImages(mockedResponse)).toEqual(expectedAction);
   })
   it('should create an action to request images', () => {
-    const mockedResponse = { data: [] };
     const expectedAction = {
       type: REQUEST_IMAGES,
       payload: { fetching: true },
@@ -27,7 +26,6 @@ describe('actions', () => {
     expect(actions.requestImages()).toEqual(expectedAction);
   });
   it('should create an action to resize the images', () => {
-    const mockedResponse = { data: [] };
     const expectedAction = {
       type: RESIZE_IMAGES,
       payload: { imageSize: 100 },
