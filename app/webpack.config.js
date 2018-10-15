@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './');
@@ -43,6 +42,16 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+      output: {
+        comments: false,
+      },
+      screwIe8: true,
+      sourceMap: true,
+    }),
   ],
   watchOptions: {
     poll: true,
@@ -51,13 +60,3 @@ const config = {
 
 module.exports = config;
 
-// new webpack.optimize.UglifyJsPlugin({
-//   compress: {
-//     warnings: false,
-//   },
-//   output: {
-//     comments: false,
-//   },
-//   screwIe8: true,
-//   sourceMap: true,
-// }),
