@@ -7,7 +7,7 @@ const router = express.Router();
 function getListPromise(page) {
   return (
     axios({
-      url: `services/rest/?method=flickr.photos.search&api_key=${config.api.flickrApiKey}&tags='london'&page=${page}tag_mode=any&per_page=30&format=json&nojsoncallback=1`,
+      url: `services/rest/?method=flickr.photos.search&api_key=${config.api.flickrApiKey}&tags='dogs'&page=${page}tag_mode=any&per_page=30&format=json&nojsoncallback=1`,
       baseURL: 'https://api.flickr.com/',
       method: 'GET',
     })

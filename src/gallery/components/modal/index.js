@@ -3,9 +3,14 @@ import './styles.scss';
 
 function Modal(props) {
   const { image, close } = props;
-  const src = image ? image.src : '';
-  const title = image ? image.title : '';
-  const visible = image ? 'visible' : 'hidden';
+  let src = '';
+  let title = '';
+  let author = '';
+  let visible = 'hidden';
+  if (image) {
+    visible = 'visible';
+    ({ src, title, author } = image);
+  }
   const style = {
     backgroundImage: `url(${src})`,
     width: '80%',
@@ -21,6 +26,7 @@ function Modal(props) {
 
   return (
     <div className={`modal ${visible}`}>
+      <h2 className="modal-title">{`${title} - ${author}`}</h2>
       <div className="modal-content" style={style}>
         <span className="close" onClick={() => close()}>
           <Cross />

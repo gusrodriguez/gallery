@@ -29,8 +29,8 @@
       transition: opacity 0.5s ease-in-out; 
     }
     .info-cell {
-      font-family: $header-font-family;
-      font-weight: bold;
+      font-weight: 400;
+      text-transform: uppercase;
       color: darkblue;
       display: table-cell;
       vertical-align: middle

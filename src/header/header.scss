@@ -1,8 +1,11 @@
+body {
+  font-family: $font-family;
+}
 .header {
   height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: $header-font-family;
   font-size: $header-font-size;
+  background-color: $header-background;
 }

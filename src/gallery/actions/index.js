@@ -46,7 +46,7 @@ const resizeImages = (containerWidth, imageSize) => {
     type: RESIZE_IMAGES,
     payload: { imageSize: size },
   };
-}
+};
 
 const displayImage = image => (dispatch) => {
   dispatch({
