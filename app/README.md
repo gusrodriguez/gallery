@@ -34,7 +34,7 @@ Install dependencies.
     npm run start
 ```
 
-### When the build finishes and the server starts, navigate to:
+### When the build finishes and the server starts (and the API is running) navigate to:
 ```
     localhost:8080
 ```
