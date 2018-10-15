@@ -5,9 +5,10 @@ const axios = require('axios');
 const router = express.Router();
 
 function getListPromise(page) {
+  const tag = 'dogs';
   return (
     axios({
-      url: `services/rest/?method=flickr.photos.search&api_key=${config.api.flickrApiKey}&tags='dogs'&page=${page}tag_mode=any&per_page=30&format=json&nojsoncallback=1`,
+      url: `services/rest/?method=flickr.photos.search&api_key=${config.api.flickrApiKey}&tags=${tag}&page=${page}tag_mode=any&per_page=30&format=json&nojsoncallback=1`,
       baseURL: 'https://api.flickr.com/',
       method: 'GET',
     })
