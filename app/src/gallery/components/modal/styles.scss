@@ -1,0 +1,67 @@
+@import '../../../variables.scss';
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: black;
+    .modal-title {
+      position: fixed;
+      color:white;
+      font-weight: 400;
+      text-transform: uppercase;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-size: $modal-title-font;
+    } 
+    .modal-content {
+      display: inline-block;   
+      background-color: black;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border: 2px solid block;  
+      vertical-align: top;
+      box-sizing: border-box;
+      margin: auto;
+      padding: 20px;
+  }
+  .close {
+      font-size: $modal-font-size;
+      font-weight: bold;
+      position: fixed;
+      top: $close-separator;
+      right: $close-separator;
+      width: $close-size;
+      height: $close-size;
+  }
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &.visible {
+    display: block;
+  }
+  &.hidden {
+    display: none;
+  }
+  &__image {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background-size: cover;
+    background-position: center center;
+    vertical-align: top;
+    box-sizing: border-box;
+  }
+}
+

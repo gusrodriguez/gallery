@@ -1,0 +1,24 @@
+// General variables
+$light-gray: #E0E0E0;
+
+// Header
+$font-family: fantasy;
+$header-font-size: 30px;
+$header-background: #F5F5FC;
+
+// Modal
+$modal-border: #888;
+$modal-content-background: #fefefe;
+$modal-background: rgba(0,0,0,0.4); 
+$modal-font-size: 44px;
+$modal-title-font: 20px;
+
+// Close button
+$close-separator: 15px;
+$close-size: 50px;
+
+// Loading
+$loading-background: #20b2aa;
+
+@import './header/header.scss';
+
