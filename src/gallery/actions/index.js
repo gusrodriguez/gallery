@@ -34,8 +34,8 @@ const requestImages = () => {
 };
 
 const fetchImages = page => async (dispatch) => {
-  const response = await axios.get(`${config.apiBaseUrl}/api/images?page=${page}`);
   dispatch(requestImages());
+  const response = await axios.get(`${config.apiBaseUrl}/api/images?page=${page}`);
   dispatch(loadImages(response));
 };
 

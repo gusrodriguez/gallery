@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Image from './components/image';
 import actions from './actions';
 import Modal from './components/modal';
+import Loading from './components/loading';
 import Waypoint from 'react-waypoint';
 import styles from './styles.scss';
 
@@ -29,6 +30,7 @@ class Gallery extends React.Component {
           close={this.props.closeImage}
         />
         {images}
+        <Loading fetching={this.props.fetching} />
         <Waypoint
           onEnter={() => this.props.fetchImages(this.props.nextPage)}
         />
@@ -43,6 +45,7 @@ const mapStateToProps = (state) => {
     images: state.images,
     imageSize: state.imageSize,
     nextPage: state.nextPage,
+    fetching: state.fetching,
   };
 };
 

@@ -12,7 +12,7 @@ const initialState = {
   nextPage: 1,
   imageSize: 200,
   images: [],
-  fetching: false,
+  fetching: true,
 };
 const nextStateImageDisplayed = (state, payload) => {
   const next = clone(state);
