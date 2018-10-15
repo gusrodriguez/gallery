@@ -49,4 +49,12 @@ class Image extends React.Component {
   }
 }
 
+Image.propTypes = {
+  containerWidth: PropTypes.number.isRequired,
+  size: PropTypes.number.isRequired,
+  resizeImages: PropTypes.func.isRequired,
+  displayImage: PropTypes.func.isRequired,
+  image: PropTypes.object.isRequired,
+};
+
 export default Image;

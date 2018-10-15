@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 function Modal(props) {
@@ -35,5 +36,14 @@ function Modal(props) {
     </div >
   );
 }
+
+Modal.propTypes = {
+  image: PropTypes.object,
+  close: PropTypes.func.isRequired,
+};
+
+Modal.defaultProps = {
+  image: null,
+};
 
 export default Modal;

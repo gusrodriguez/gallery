@@ -58,9 +58,16 @@ const mapDispatchToProps = {
 
 Gallery.propTypes = {
   fetchImages: PropTypes.func.isRequired,
+  images: PropTypes.array.isRequired,
+  nextPage: PropTypes.number.isRequired,
   resizeImages: PropTypes.func.isRequired,
   displayImage: PropTypes.func.isRequired,
   closeImage: PropTypes.func.isRequired,
+  imageSize: PropTypes.number,
+};
+
+Gallery.defaultProps = {
+  imageSize: 200,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

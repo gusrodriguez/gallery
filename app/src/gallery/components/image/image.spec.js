@@ -12,7 +12,7 @@ function setup() {
     containerWidth: 10,
     size: 10,
     image: {
-      src: '', 
+      src: '',
       title: 'hello',
       author: 'john doe',
       postUrl: '',
