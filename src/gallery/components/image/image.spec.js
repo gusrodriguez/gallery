@@ -8,9 +8,19 @@ Enzyme.configure({ adapter: new Adapter() });
 function setup() {
   const props = {
     displayImage: jest.fn(),
+    resizeImages: jest.fn(),
+    containerWidth: 10,
+    size: 10,
+    image: {
+      src: '', 
+      title: 'hello',
+      author: 'john doe',
+      postUrl: '',
+    },
+    visible: true,
   };
 
-  const wrapper = mount(<Image {...props} />)
+  const wrapper = mount(<Image {...props} />);
 
   return { props, wrapper };
 }
@@ -18,9 +28,11 @@ function setup() {
 describe('Image', () => {
   const { wrapper, props } = setup();
   it('should render correctly', () => {
-    expect(false).toBe(true);
+    expect(wrapper.find('div').first().hasClass('image')).toBe(true);
   }); 
   it('should call the displayImage() action on click', () => {
-    expect(false).toBe(true);
+    const div = wrapper.find('div').first();
+    div.simulate('click');
+    expect(props.displayImage).toHaveBeenCalledTimes(1);
   });
 });

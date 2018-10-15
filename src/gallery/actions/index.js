@@ -67,4 +67,6 @@ export default {
   resizeImages,
   displayImage,
   closeImage,
+  loadImages,
+  requestImages,
 };
