@@ -24,7 +24,10 @@ class Gallery extends React.Component {
     });
     return (
       <section className="gallery" >
-        <Modal display={this.props.imageDisplayed} close={this.props.closeImage} />
+        <Modal 
+          image={this.props.imageDisplayed}
+          close={this.props.closeImage}
+        />
         {images}
         <Waypoint
           onEnter={() => this.props.fetchImages(this.props.nextPage)}

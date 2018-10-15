@@ -10,19 +10,27 @@
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: $modal-background;
+    background-color: black;
     .modal-content {
-      background-color: $modal-content-background;
-      border: 1px solid $modal-border;
+      display: inline-block;   
+      background-color: black;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border: 2px solid block;  
+      vertical-align: top;
+      box-sizing: border-box;
       margin: auto;
       padding: 20px;
-      width: 80%;
   }
   .close {
-      color: $modal-close-color;
       font-size: $modal-font-size;
-      float: right;
       font-weight: bold;
+      position: fixed;
+      top: $close-separator;
+      right: $close-separator;
+      width: $close-size;
+      height: $close-size;
   }
   .close:hover,
   .close:focus {
@@ -35,6 +43,15 @@
   }
   &.hidden {
       display: none;
+  }
+  &__image {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background-size: cover;
+    background-position: center center;
+    vertical-align: top;
+    box-sizing: border-box;
   }
 }
 

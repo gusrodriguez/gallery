@@ -9,8 +9,11 @@ $header-font-size: 30px;
 $modal-border: #888;
 $modal-content-background: #fefefe;
 $modal-background: rgba(0,0,0,0.4); 
-$modal-close-color: #aaaaaa;
-$modal-font-size: 28px;
+$modal-font-size: 44px;
+
+// Close button
+$close-separator: 15px;
+$close-size: 50px;
 
 @import './header/header.scss';
 
