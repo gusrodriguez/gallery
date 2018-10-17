@@ -5,6 +5,7 @@ import Image from './components/image';
 import actions from './actions';
 import Modal from './components/modal';
 import Loading from './components/loading';
+import ErrorMessage from './components/error-message';
 import Waypoint from 'react-waypoint';
 import styles from './styles.scss';
 
@@ -14,6 +15,9 @@ class Gallery extends React.Component {
     this.props.fetchImages(this.props.nextPage);
   }
   render() {
+
+    if(this.props.error) { return <ErrorMessage />};
+
     const images = this.props.images.map((image) => {
       return (<Image
         displayImage={() => this.props.displayImage(image)}
@@ -32,7 +36,7 @@ class Gallery extends React.Component {
         {images}
         <Loading fetching={this.props.fetching} />
         <Waypoint
-          onEnter={() => this.props.fetchImages(this.props.nextPage)}
+          onEnter={() => this.props.fetchImages(this.props.nextPage + 1)}
         />
       </section>
     );
@@ -46,6 +50,7 @@ const mapStateToProps = (state) => {
     imageSize: state.imageSize,
     nextPage: state.nextPage,
     fetching: state.fetching,
+    error: state.error,
   };
 };
 
@@ -64,10 +69,12 @@ Gallery.propTypes = {
   displayImage: PropTypes.func.isRequired,
   closeImage: PropTypes.func.isRequired,
   imageSize: PropTypes.number,
+  error: PropTypes.bool,
 };
 
 Gallery.defaultProps = {
   imageSize: 200,
+  error: false,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

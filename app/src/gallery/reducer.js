@@ -4,6 +4,7 @@ import {
   CLOSE_IMAGE,
   REQUEST_IMAGES,
   LOAD_IMAGES,
+  DISPLAY_ERROR,
 } from './actions/types';
 
 const initialState = { 
@@ -12,6 +13,7 @@ const initialState = {
   imageSize: 200,
   images: [],
   fetching: true,
+  error: false,
 };
 const nextStateImageDisplayed = (state, payload) => {
   const next = clone(state);
@@ -33,9 +35,10 @@ const nextStateLoadImages = (state, payload) => {
   return next;
 };
 
-const nextStateResizeImages = (state, payload) => {
+const nextStateDisplayError = (state, payload) => {
   const next = clone(state);
-  next.imageSize = payload.imageSize;
+  next.fetching = false;
+  next.error = payload;
   return next;
 };
 
@@ -49,6 +52,8 @@ const galleryReducer = (state = initialState, action) => {
       return nextStateRequestImages(state, action.payload);
     case LOAD_IMAGES:
       return nextStateLoadImages(state, action.payload);
+    case DISPLAY_ERROR:
+      return nextStateDisplayError(state, action.payload);
     default:
       return state;
   }

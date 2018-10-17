@@ -5,12 +5,13 @@ import {
   LOAD_IMAGES,
   DISPLAY_IMAGE,
   CLOSE_IMAGE,
+  DISPLAY_ERROR,
 } from './types';
 
 const loadImages = (response) => {
   const images = response.data.map((value) => {
     return {
-      src: `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}.jpg`, 
+      src: `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}.jpg`,
       title: value.title,
       author: value.author,
       postUrl: value.postUrl,
@@ -32,10 +33,21 @@ const requestImages = () => {
   };
 };
 
+const displayError = () => {
+  return {
+    type: DISPLAY_ERROR,
+    payload: true,
+  };
+};
+
 const fetchImages = page => async (dispatch) => {
   dispatch(requestImages());
-  const response = await axios.get(`${config.apiBaseUrl}/api/images?page=${page}`);
-  dispatch(loadImages(response));
+  try {
+    const response = await axios.get(`${config.apiBaseUrl}/api/images?page=${page}`);
+    dispatch(loadImages(response));
+  } catch (error) {
+    dispatch(displayError());
+  }
 };
 
 const displayImage = image => (dispatch) => {
@@ -58,4 +70,5 @@ export default {
   closeImage,
   loadImages,
   requestImages,
+  displayError,
 };
