@@ -6,15 +6,11 @@ class Image extends React.Component {
   constructor(props) {
     super(props);
     this.redirectToPost = this.redirectToPost.bind(this);
-    this.resize = this.resize.bind(this);
     this.state = {};
   }
   componentDidMount() {
     const { containerWidth, size } = this.props;
-    this.resize(containerWidth, size);
-  }
-  resize(containerWidth, imageSize) {
-    const imagesPerRow = Math.round(containerWidth / imageSize);
+    const imagesPerRow = Math.round(containerWidth / size);
     this.setState({ size: containerWidth / imagesPerRow });
   }
   redirectToPost(e) {
@@ -58,7 +54,6 @@ class Image extends React.Component {
 Image.propTypes = {
   containerWidth: PropTypes.number.isRequired,
   size: PropTypes.number.isRequired,
-  resizeImages: PropTypes.func.isRequired,
   displayImage: PropTypes.func.isRequired,
   image: PropTypes.object.isRequired,
 };
