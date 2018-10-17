@@ -4,7 +4,6 @@ import {
   CLOSE_IMAGE,
   REQUEST_IMAGES,
   LOAD_IMAGES,
-  RESIZE_IMAGES,
 } from './actions/types';
 
 const initialState = { 
@@ -50,8 +49,6 @@ const galleryReducer = (state = initialState, action) => {
       return nextStateRequestImages(state, action.payload);
     case LOAD_IMAGES:
       return nextStateLoadImages(state, action.payload);
-    case RESIZE_IMAGES:
-      return nextStateResizeImages(state, action.payload);
     default:
       return state;
   }

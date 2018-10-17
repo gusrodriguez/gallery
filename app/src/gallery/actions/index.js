@@ -38,15 +38,6 @@ const fetchImages = page => async (dispatch) => {
   dispatch(loadImages(response));
 };
 
-const resizeImages = (containerWidth, imageSize) => {
-  const imagesPerRow = Math.round(containerWidth / imageSize);
-  const size = (containerWidth / imagesPerRow);
-  return {
-    type: RESIZE_IMAGES,
-    payload: { imageSize: size },
-  };
-};
-
 const displayImage = image => (dispatch) => {
   dispatch({
     type: DISPLAY_IMAGE,

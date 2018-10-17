@@ -2,7 +2,6 @@ import actions from './';
 import {
   LOAD_IMAGES,
   REQUEST_IMAGES,
-  RESIZE_IMAGES,
   CLOSE_IMAGE,
 } from './types';
 

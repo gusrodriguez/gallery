@@ -1,7 +1,6 @@
 import reducer from './reducer'
 import {
   CLOSE_IMAGE,
-  RESIZE_IMAGES,
 } from './actions/types';
 
 describe('reducer', () => {
@@ -15,17 +14,6 @@ describe('reducer', () => {
         fetching: true,
       },
       );
-  });
-  it('should handle RESIZE_IMAGES', () => {
-    expect(
-      reducer([], {
-        type: RESIZE_IMAGES,
-        payload: { imageSize: 100 },
-      }),
-    ).toEqual({
-      imageSize: 100,
-    },
-    );
   });
   it('should handle CLOSE_IMAGES', () => {
     expect(
