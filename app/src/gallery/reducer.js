@@ -8,10 +8,9 @@ import {
 } from './actions/types';
 
 const initialState = { 
+  images: [],
   imageDisplayed: null,
   nextPage: 1,
-  imageSize: 200,
-  images: [],
   fetching: true,
   error: false,
 };
