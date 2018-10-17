@@ -29,31 +29,31 @@ router.get('/images', (req, res) => {
   const promises = [];
   const response = [];
   try {
-  getListPromise(req.query.page)
-    .then((apiResponse) => {
-      apiResponse.data.photos.photo.forEach((image) => {
-        promises.push(
-          getImagePromise(image.id, image.secret),
-        );
-      })
+    getListPromise(req.query.page)
+      .then((apiResponse) => {
+        apiResponse.data.photos.photo.forEach((image) => {
+          promises.push(
+            getImagePromise(image.id, image.secret),
+          );
+        })
 
-      Promise.all(promises)
-        .then((values) => {
-          values.forEach((value) => {
-            response.push({
-              id: value.data.photo.id,
-              title: value.data.photo.title._content,
-              server: value.data.photo.server,
-              secret: value.data.photo.secret,
-              farm: value.data.photo.farm,
-              author: value.data.photo.owner.username,
-              postUrl: value.data.photo.urls.url[0]._content,
+        Promise.all(promises)
+          .then((values) => {
+            values.forEach((value) => {
+              response.push({
+                id: value.data.photo.id,
+                title: value.data.photo.title._content,
+                server: value.data.photo.server,
+                secret: value.data.photo.secret,
+                farm: value.data.photo.farm,
+                author: value.data.photo.owner.username,
+                postUrl: value.data.photo.urls.url[0]._content,
+              });
             });
-          });
 
-          res.json(response);
-        });
-    })
+            res.json(response);
+          });
+      })
   } catch (error) {
     res.send(500);
   }
