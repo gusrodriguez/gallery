@@ -28,13 +28,14 @@ function getImagePromise(id, secret) {
 router.get('/images', (req, res) => {
   const promises = [];
   const response = [];
+  try {
   getListPromise(req.query.page)
     .then((apiResponse) => {
       apiResponse.data.photos.photo.forEach((image) => {
         promises.push(
           getImagePromise(image.id, image.secret),
         );
-      });
+      })
 
       Promise.all(promises)
         .then((values) => {
@@ -52,7 +53,10 @@ router.get('/images', (req, res) => {
 
           res.json(response);
         });
-    });
+    })
+  } catch (error) {
+    res.send(500);
+  }
 });
 
 module.exports = router;
