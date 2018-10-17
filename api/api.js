@@ -1,21 +1,18 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const configuration = require('./config');
 
 const app = express();
 
 const router = express.Router();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
 /*
+ * This is only for development purposes!. The app in production should only accept the origin of the application itself.
  * Allow axios cross domain requests. '*' should be removed for security reasons.
  */
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'GET');
   next();
 });
 
