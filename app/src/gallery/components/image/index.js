@@ -6,10 +6,16 @@ class Image extends React.Component {
   constructor(props) {
     super(props);
     this.redirectToPost = this.redirectToPost.bind(this);
+    this.resize = this.resize.bind(this);
+    this.state = {};
   }
   componentDidMount() {
-    const { containerWidth, size, resizeImages } = this.props;
-    resizeImages(containerWidth, size);
+    const { containerWidth, size } = this.props;
+    this.resize(containerWidth, size);
+  }
+  resize(containerWidth, imageSize) {
+    const imagesPerRow = Math.round(containerWidth / imageSize);
+    this.setState({ size: containerWidth / imagesPerRow });
   }
   redirectToPost(e) {
     e.stopPropagation();
@@ -31,8 +37,8 @@ class Image extends React.Component {
         <div
           className="info"
           style={{
-            width: `${this.props.size - hoverMargin}px`,
-            height: `${this.props.size - hoverMargin}px`,
+            width: `${this.state.size - hoverMargin}px`,
+            height: `${this.state.size - hoverMargin}px`,
             marginTop: '15px',
             marginLeft: '15px',
           }}

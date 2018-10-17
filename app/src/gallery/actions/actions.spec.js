@@ -25,13 +25,6 @@ describe('actions', () => {
     };
     expect(actions.requestImages()).toEqual(expectedAction);
   });
-  it('should create an action to resize the images', () => {
-    const expectedAction = {
-      type: RESIZE_IMAGES,
-      payload: { imageSize: 100 },
-    };
-    expect(actions.resizeImages(100, 200)).toEqual(expectedAction);
-  });
   it('should create an action to close the images', () => {
     const expectedAction = {
       type: CLOSE_IMAGE,

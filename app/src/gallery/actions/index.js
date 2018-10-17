@@ -3,7 +3,6 @@ import config from '../../../config';
 import {
   REQUEST_IMAGES,
   LOAD_IMAGES,
-  RESIZE_IMAGES,
   DISPLAY_IMAGE,
   CLOSE_IMAGE,
 } from './types';
@@ -64,7 +63,6 @@ const closeImage = () => {
 
 export default {
   fetchImages,
-  resizeImages,
   displayImage,
   closeImage,
   loadImages,
