@@ -1,6 +1,6 @@
 # Image Gallery
 
-The solution is divided in two different aplications: 'app' and 'api'. You need to install and run both at the same time for getting it to work.
+The solution is divided in two different aplications: **app** and **api**. You need to install and run both at the same time for getting it to work.
 
 ## API
 
@@ -42,7 +42,7 @@ Install dependencies.
 ### Run tests
 The web application is covered with tests, please run them by typing:
 ```
-    cd 'app'
+    cd app
 ```
 ```
     npm run test
