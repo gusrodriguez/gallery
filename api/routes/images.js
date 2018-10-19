@@ -52,8 +52,10 @@ router.get('/images', (req, res) => {
             });
 
             res.json(response);
-          });
+          })
+          .catch(() => { res.send(500) });;
       })
+      .catch(() => { res.send(500) });
   } catch (error) {
     res.send(500);
   }
