@@ -3,6 +3,7 @@ import {
   LOAD_IMAGES,
   REQUEST_IMAGES,
   CLOSE_IMAGE,
+  DISPLAY_ERROR
 } from './types';
 
 describe('actions', () => {
@@ -30,5 +31,12 @@ describe('actions', () => {
       payload: null,
     };
     expect(actions.closeImage()).toEqual(expectedAction);
+  })
+  it('should create an action to display an error', () => {
+    const expectedAction = {
+      type: DISPLAY_ERROR,
+      payload: true,
+    };
+    expect(actions.displayError()).toEqual(expectedAction);
   })
 })
