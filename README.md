@@ -61,9 +61,9 @@ The web application is covered with tests, please run them by typing:
 * The images are being loaded async.
 
 ## Some assumptions and decisions taken in the implementation:
-- Important. The application runs on Node >= 8
+- Important: The application runs on Node >= 8
 - A random tag ("dogs") was selected for the images category to display.
-- The infinite load approach was selected over the pagination. By using Redux, I assume the state handling is cleaner and more simple for that case. 
+- The infinite scroll approach was selected over the pagination. By using Redux, I assume the state handling is cleaner and more simple for that case. 
 - In order to implement the infinite scroll, the React Waypoint component was used. This component rises an event once entered into the viewport. In order to give better controll to this component, I decided to keep all the thumbnail images squared.
 - The error handling is showing a generic error message for any kind of error. This could be separated with different messages with more detail for each error.
 
