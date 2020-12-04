@@ -21,7 +21,7 @@ npm install
 
 #### Run the application
 ```
-    npm run start
+npm run start
 ```
 ### APP
 #### Installation
